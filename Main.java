@@ -2,6 +2,28 @@
 public class Main {
 	public static void main(String[] args) {
 
+
+		ArrList<String> s = new ArrList<>();
+
+		s.insertLast("apple"); s.print();
+		s.insertLast("orange"); s.print();
+		s.insertLast("cherry"); s.print();
+		s.insertLast("peer"); s.print();
+		s.insert("grape", 1); s.print();
+		s.insert("lemon", 4); s.print();
+		s.insertLast("kiwi"); s.print();
+
+		s.delete(4); s.print();
+		s.delete(0); s.print();
+		s.delete(0); s.print();
+		s.delete(3); s.print();
+		s.delete(0); s.print();
+
+		System.out.println("1번째 항목은 " + s.peek(1) + "이다.");
+		System.out.println();
+
+
+
 		SList<Integer> sortedList1 = new SList<Integer>();
 		SList<Integer> sortedList2 = new SList<Integer>();
 
@@ -52,13 +74,6 @@ public class Main {
 		singleList.splitList(singleList.head, k, list1, list2);
 		System.out.print("List 1(<= 20): "); singleList.print();
 		System.out.print("List 2(>20):   ");list2.print();
-
-
-
-
-
-
-
-
+		System.out.println();
 	}
 }
