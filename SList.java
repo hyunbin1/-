@@ -75,8 +75,33 @@ public class SList <E extends Comparable<E>> {
     }
 
     public void splitList(Node p, int k, SList l1, SList l2){
+        Node l1Node = new Node(null, null);
+        Node l1Temp = l1Node;
 
-        System.out.println("k="+k+"을 기준으로 두 개의 리스트로 분리:");
+        Node l2Node = new Node(null, null);
+        Node l2Temp = l2Node;
+
+        while(p != null){
+            if(p.getItem().compareTo(k) <= 0) {
+                l1Temp.setNext(p);
+                p = p.getNext();
+                l1Temp = l1Temp.getNext();
+            }else{
+                l2Temp.setNext(p);
+                p = p.getNext();
+                l2Temp = l2Temp.getNext();
+            }
+        }
+
+        if(l1Temp.getNext() != null){
+            l1Temp.setNext(null);
+        }
+        if(l2Temp.getNext() != null){
+            l2Node.setNext(null);
+        }
+
+        l1.head = l1Temp.getNext();
+        l2.head = l2Node.getNext();
 
     }
 

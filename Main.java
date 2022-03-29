@@ -13,7 +13,7 @@ public class Main {
 		sortedList1.insertFront(20);
 		sortedList1.insertFront(10);
 		sortedList1.print();
-		
+
 		// sortedList2 초기화
 		System.out.print("Sorted List 2: ");
 		sortedList2.insertFront(55);
@@ -22,10 +22,43 @@ public class Main {
 		sortedList2.insertFront(18);
 		sortedList2.insertFront(15);
 		sortedList2.print();
-		
-		// Merged List 
+
+		// Merged List [연습문제 2.17]
 		System.out.print("Merged List:   ");
 		sortedList1.mergedLists(sortedList1.head, sortedList2.head);
 		sortedList1.print();
-		}
+
+		// Separation based on K
+		SList<Integer> singleList = new SList<>();
+		int k = 20;
+		singleList.insertFront(45);
+		singleList.insertFront(17);
+		singleList.insertFront(20);
+		singleList.insertFront(50);
+		singleList.insertFront(57);
+		singleList.insertFront(35);
+		singleList.insertFront(10);
+		singleList.insertFront(15);
+		singleList.insertFront(90);
+		singleList.insertFront(10);
+		SList<Integer> list1 = new SList<>();
+		SList<Integer> list2 = new SList<>();
+		System.out.println("--------------------");
+		System.out.println();
+
+
+		System.out.print("Single List: "); singleList.print();
+		System.out.println("k="+k+"을 기준으로 두 개의 리스트로 분리:");
+		singleList.splitList(singleList.head, k, list1, list2);
+		System.out.print("List 1(<= 20): "); singleList.print();
+		System.out.print("List 2(>20):   ");list2.print();
+
+
+
+
+
+
+
+
+	}
 }
