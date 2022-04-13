@@ -1,4 +1,5 @@
 package 후위표기법;
+// 자료구조 과제 #4(60200216 김현빈)
 
 public class Main {
     public static void main(String[] args) {
@@ -8,10 +9,14 @@ public class Main {
         String input4 = "(A-B)*C-(D/(E+F))";
 
         test(input1);
+        test(input2);
+        test(input3);
+        test(input4);
     }
 
     public static void test(String str) {
-        ListStack<String> stack = new ListStack<>();
+        ListStack<Character> stack = new ListStack<>();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
@@ -21,38 +26,39 @@ public class Main {
                 case '-':
                 case '*':
                 case '/':
-                    while(!stack.isEmpty() && priority(stack.peek()) >= priority(String.valueOf(ch))){
-                        stack.pop();
+                    while(!stack.isEmpty() && priority(stack.peek()) >= priority(ch)){ // 스택이 비어있지 않고 우선순위 보다 현재가 더 높음
+                        sb.append(stack.pop());
                     }
-                    stack.push(String.valueOf(ch));
+                    stack.push(ch);
                     break;
                 case '(':
-                    stack.push(String.valueOf(ch));
+                    stack.push(ch);
                     break;
                 case ')':
-                    while(!stack.isEmpty() && stack.peek() != "("){
-                        stack.pop();
+                    while(!stack.isEmpty() && stack.peek() != '('){
+                        sb.append(stack.pop());
                     }
                     stack.pop();
+                    break;
+
                 default:
-                    stack.push(String.valueOf(ch));
-
+                    sb.append(ch);
             }
-            while(!stack.isEmpty()){
-                stack.pop();
-            }
-            stack.print();
-
-
         }
+
+        while(!stack.isEmpty()){
+            sb.append(stack.pop());
+        }
+
+        System.out.println(sb.toString());
     }
 
-    public static int priority(String operator) {
-        if (operator == "(" || operator == ")") {
+    public static int priority(char operator) {
+        if (operator == '(' || operator == ')') {
             return 0;
-        } else if (operator == "+" || operator == "-") {
+        } else if (operator == '+' || operator == '-') {
             return 1;
-        } else if (operator == "*" || operator == "/") {
+        } else if (operator == '*' || operator == '/') {
             return 2;
 
         }
