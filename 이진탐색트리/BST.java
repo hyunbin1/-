@@ -58,9 +58,37 @@ public class BST <Key extends Comparable<Key>, Value> {
         return n;
     }
     
-    // 최소값 찾기
+    // 최소값 찾기 - 왼쪽 자식 노드를 따라 내려가다 null을 만났을 때, null의 부모 노드가 가진 key를 리턴한다.
+    public Key min() {
+        if(root == null){
+            return null;
+        }
 
-    
+        return (Key) min(root).getKey(); // 노드를 같은 매개변수 min을 호출힌다.
+    }
+
+    private Node min(Node n){
+        if(n.getLeft() == null) return n;
+
+        return min(n.getLeft());
+    }
+
+    public void deleteMin(){
+        if( root == null ){
+            System.out.println("empty 트리");
+        }
+        root = deleteMin(root);
+    }
+
+    public Node deleteMin(Node n){
+        if(n.getLeft() == null) return n.getRight(); // 조상이 오른쪽 자식 참조하도록 하면 저절로 삭제됨
+
+        // 왼쪽 자식이 있을 경우
+        n.setLeft(deleteMin(n.getLeft()));
+
+        // 질문? 오른쪽 자식또한 null인 경우 부모 노드를 없ㅇㅇ
+       return n;
+    }
     
     
 
