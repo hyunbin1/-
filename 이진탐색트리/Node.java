@@ -1,3 +1,4 @@
+//자료구조 과제 #6(60200216 김현빈)
 package 이진탐색트리;
 
 public class Node <Key extends Comparable<Key>, Value>{
