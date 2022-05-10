@@ -87,15 +87,27 @@ public class BinaryTree<Key extends Comparable<Key>> {
         return (isEqual(n.getLeft(), m.getLeft()) && isEqual(n.getRight(), m.getRight()));
     }
 
+//
+//    public static Node copy(Node root) {
+//        if( root == null)
+//            return null;
+//
+//        Node newNode = new Node(root.getKey(), null, null);
+//        newNode.setRight(copy(root.getRight()));
+//        newNode.setLeft(copy(root.getLeft()));
+//
+//        return newNode;
+//    }
+//
+    // 교수님 코드
+    public Node copy (Node n){
+        Node left, right;
 
-    public static Node copy(Node root) {
-        if( root == null)
-            return null;
-
-        Node newNode = new Node(root.getKey(), null, null);
-        newNode.setRight(copy(root.getRight()));
-        newNode.setLeft(copy(root.getLeft()));
-
-        return newNode;
+        if(n==null) { return null;}
+        else{
+            left = copy(n.getLeft());
+            right = copy(n.getRight());
+            return new Node(n.getKey(), left, right);
+        }
     }
 }
