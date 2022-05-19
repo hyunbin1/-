@@ -81,4 +81,20 @@ public class AVL <Key extends Comparable<Key>, Value> {
         if(x>y) return x;
         else return y;
     }
+//
+//    public void delete(Key k) {
+//        root = delete(root, k);
+//    }
+
+//    private Node delete(Node n, Key k) {
+//        if(n==null) return null;
+//        int t = k.compareTo((Key)n.id);
+//
+//        if( t< 0 ) n.left = ;
+//        else if(t > 0) n.right = ;
+//
+//    }
+//
+//
+
 }
